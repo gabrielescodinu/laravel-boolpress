@@ -51,10 +51,10 @@ class PostController extends Controller
         $post->title = request('title');
         $post->body = request('body');
         $post->save();
-
-        $new_post->tags()->attach($request->tags);
-
-        return redirect()->route('posts.index', $new_post);
+        
+        $post->tags()->attach($request->tags);
+        
+        return redirect()->route('posts.index');
     }
 
     /**
