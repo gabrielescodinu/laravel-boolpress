@@ -10951,14 +10951,13 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 200;
   height: 100vh;
+  padding: 20px;
 }
 
 a {
   text-decoration: none;
-  background: orange;
   border-radius: 5px;
-  padding: 5px;
-  color: white;
+  margin-right: 20px;
 }
 
 p a {
@@ -10966,7 +10965,6 @@ p a {
   background: green;
   border-radius: 5px;
   padding: 5px;
-  color: white;
 }
 
 .full-height {

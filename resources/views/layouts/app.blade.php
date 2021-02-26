@@ -7,10 +7,15 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        @yield('style')
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     </head>
     <body>
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="{{ route('posts.index') }}">Admin</a>
+            <a href="/posts_api">Posts</a>
+        </div>
         @yield('content')
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

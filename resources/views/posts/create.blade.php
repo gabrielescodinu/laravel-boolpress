@@ -18,7 +18,7 @@
         @csrf
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" value="{{ old('title')}}">
+            <input class="form-control" type="text" name="title" id="title" value="{{ old('title')}}">
         </div>
         @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -26,15 +26,15 @@
 
         <div class="form-group">
             <label for="body">Body</label>
-            <input type="body" name="body" id="body" value="{{ old('body')}}">
+            <input class="form-control" type="body" name="body" id="body" value="{{ old('body')}}">
         </div>
         @error('body')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
         <div class="form-group">
-            <label for="tags">Body</label>
-            <select name="tags[]" id="tags" multiple>
+            <label for="tags">Tag</label>
+            <select name="tags[]" id="tags" multiple id="inputState" class="form-control">
                 @if($tags)
                     @foreach($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -46,11 +46,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <button type="submit">Submit</button>    
+        <button type="submit" class="btn btn-success">Submit</button>    
     </form>
-
-        <div>
-        <a href="{{route('posts.index')}}">Back to posts</a>
-        </div>
 
 @endsection

@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <a href="{{route('posts.index')}}">Back to posts</a>
-    <a href="/">Back Home</a>
-
-    <p>{{$post->title}}</p>
-    <p>{{$post->body}}</p>
-    <p>Category: {{$post->category->name}}</p>
-
-    <div class="tag">
-        Tags: 
-        @if(count($post->tags) > 0) 
-            @foreach ($post->tags as $tag)
-                <span>{{ $tag->name }}</span>
-            @endforeach
-        @else
-        <span>N/A</span>
-        @endif
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">  
+                        <h5>{{$post->title}}</h5>  
+                    </div>
+                    
+                    <div class="card-body">
+                    <p>Description: {{$post->body}}</p>
+                    Tags: 
+                    @if(count($post->tags) > 0) 
+                        @foreach ($post->tags as $tag)
+                            <span>{{ $tag->name }}</span>
+                        @endforeach
+                    @else
+                    <span>N/A</span>
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 @endsection

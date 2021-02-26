@@ -1,28 +1,45 @@
 @extends('layouts.app')
 
-@section('style')
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
-@endsection
-
 @section('content')
-
-    <a href="{{route('posts.create')}}">Create a new post</a>
-    <a href="/">Back Home</a>
-
-    @foreach($posts as $post)
-        <p>{{$post->title}}</p>
-        <p>{{$post->body}}</p>
-        <p>{{$post->created_at}}</p>
-        <p>{{$post->updated_at}}</p> 
-            <a href="{{route('posts.show', ['post'=> $post->id] )}}">View</a> 
-            <a href="{{route('posts.edit', ['post'=> $post->id] )}}">Edit</a> 
-            <form action="{{route('posts.destroy', ['post'=> $post->id] )}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </p>
-        <hr>
-    @endforeach
     
+    <a href="{{route('posts.create')}}" class="btn btn-primary">Create a new post</a>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($posts as $post)
+        <tr>
+            <td>{{$post->title}}</td>
+            <td>{{$post->body}}</td>
+            <td>{{$post->created_at}}</td>
+            <td>{{$post->updated_at}}</td>
+            <td>
+                <a href="{{route('posts.show', ['post'=> $post->id] )}}" class="btn btn-primary">
+                    <i class="fas fa-eye fa-lg fa-fw"></i>
+                    View
+                </a>
+                <a href="{{route('posts.edit', ['post'=> $post->id] )}}" class="btn btn-primary">
+                    <i class="fas fa-eye fa-lg fa-fw"></i>
+                    Edit
+                </a>
+                <form action="{{route('posts.destroy', ['post'=> $post->id] )}}" method="post">
+                    <i class="fas fa-trash fa-lg fa-fw"></i>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 @endsection

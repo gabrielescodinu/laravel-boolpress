@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <a href="{{route('posts.index')}}">Back to posts</a>
-    <a href="/">Back Home</a>
-
     <h1>Edit {{$post->title}}</h1>
 
     @if ($errors->any())
@@ -22,17 +18,17 @@
         @method('PUT')
         <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" value="{{$post->title}}">
+        <input class="form-control" type="text" name="title" id="title" value="{{$post->title}}">
         </div>
 
         <div class="form-group">
         <label for="body">Body</label>
-        <input type="body" name="body" id="body" value="{{$post->body}}">
+        <input class="form-control" type="body" name="body" id="body" value="{{$post->body}}">
         </div>
 
         <div class="form-group">
-            <label for="tags">Body</label>
-            <select name="tags[]" id="tags" multiple>
+            <label for="tags">Tags</label>
+            <select name="tags[]" id="tags" multiple multiple id="inputState" class="form-control">
                 @if($tags)
                     @foreach($tags as $tag)
                     <option value="{{ $tag->id }}" {{ $post->tags->contains($tag) ? 'selected' : ''}}> {{ $tag->name }} </option>
@@ -44,11 +40,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <button type="submit">Submit</button>    
+        <button class="btn btn-success" type="submit">Submit</button>    
     </form>
-
-    <div>
-    <a href="{{route('posts.index')}}">Back to posts</a>
-    </div>
 
 @endsection
