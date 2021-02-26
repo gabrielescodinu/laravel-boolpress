@@ -8,17 +8,27 @@
 @import '~bootstrap/scss/bootstrap';
 
 html, body {
-    background-color: #fff;
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
     height: 100vh;
+    background-image: url('../../public/img/sfondo.jpg');
+    background-size: cover;
+}
+body {
     padding: 20px;
 }
 a {
     text-decoration: none;
+    color: #636b6f;
     border-radius: 5px;
     margin: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+        color: orange;
+        text-decoration: none;
+    }
 }
 
 .full-height {
@@ -57,6 +67,10 @@ a {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+    &:hover {
+        color: orange;
+        text-decoration: none;
+    }
 }
 
 .m-b-md {

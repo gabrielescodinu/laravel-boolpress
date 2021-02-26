@@ -10946,18 +10946,30 @@ a.text-dark:focus {
 
 html,
 body {
-  background-color: #fff;
   color: #636b6f;
   font-family: "Nunito", sans-serif;
   font-weight: 200;
   height: 100vh;
+  background-image: url(/images/sfondo.jpg?9c556da5bf779d47b664f8062b19f0e6);
+  background-size: cover;
+}
+
+body {
   padding: 20px;
 }
 
 a {
   text-decoration: none;
+  color: #636b6f;
   border-radius: 5px;
   margin: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
 }
 
 .full-height {
@@ -10996,6 +11008,11 @@ a {
   letter-spacing: 0.1rem;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.links > a:hover {
+  color: orange;
+  text-decoration: none;
 }
 
 .m-b-md {

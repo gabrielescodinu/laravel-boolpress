@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+    body {
+        
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="flex-center position-ref full-height">
 
     <div class="content">
         <div class="title m-b-md">
-            Boolpress
+            BOOLPRESS
         </div>
 
         <div class="links">
