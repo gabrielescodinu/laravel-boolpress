@@ -9,4 +9,15 @@
     <p>{{$post->body}}</p>
     <p>Category: {{$post->category->name}}</p>
 
+    <div class="tag">
+        Tags: 
+        @if(count($post->tags) > 0) 
+            @foreach ($post->tags as $tag)
+                <span>{{ $tag->name }}</span>
+            @endforeach
+        @else
+        <span>N/A</span>
+        @endif
+    </div>
+
 @endsection

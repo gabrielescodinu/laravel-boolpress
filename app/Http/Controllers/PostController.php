@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 
 
@@ -27,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view ('posts.create');
+        $tags = Tag::all();
+        return view ('posts.create', compact('tags'));
     }
 
     /**
@@ -41,6 +44,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'tags' => 'exists:tags,id'
         ]);
 
         $post = new Post;
@@ -48,7 +52,9 @@ class PostController extends Controller
         $post->body = request('body');
         $post->save();
 
-        return redirect()->route('posts.index');
+        $new_post->tags()->attach($request->tags);
+
+        return redirect()->route('posts.index', $new_post);
     }
 
     /**
@@ -70,7 +76,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view ('posts.edit', compact('post'));
+        $tags = Tag::all();
+        return view ('posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -85,10 +92,12 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'tags' => 'exists:tags,id'
         ]);
         
         $data = $request->all();
         $post->update($data);
+        $post->tags()->sync($request->tags);
         return redirect()->route('posts.index');
     }
 
